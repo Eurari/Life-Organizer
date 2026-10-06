@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraLife Organizer</title>
+    <title>Nana</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
@@ -32,7 +32,6 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Glassmorphism Classes */
         .glass-panel {
             background: var(--glass-bg);
             backdrop-filter: blur(16px);
@@ -49,7 +48,6 @@
             backdrop-filter: blur(8px);
         }
 
-        /* Custom Scrollbars */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -61,16 +59,11 @@
             background: #ffb6c1;
             border-radius: 4px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ff69b4;
-        }
 
-        /* Aero/Glamour Glows */
         .glow-pink {
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
         }
 
-        /* Cat Animation/Float */
         @keyframes floatPet {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-8px) rotate(2deg); }
@@ -89,9 +82,9 @@
             <div class="p-6 flex items-center justify-between border-b border-pink-200/50">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-400 to-pink-200 flex items-center justify-center text-white shadow-md">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                    <span id="brand-title" class="font-bold text-xl tracking-wide text-[var(--heading-color)]">AuraLife</span>
+                    <span id="brand-title" class="font-bold text-xl tracking-wide text-[var(--heading-color)]">Nana</span>
                 </div>
                 <button onclick="toggleSidebar()" class="text-[var(--text-secondary)] hover:text-[var(--accent-color)] transition-colors p-1">
                     <i class="fa-solid fa-chevron-left text-lg"></i>
@@ -123,16 +116,15 @@
             </nav>
         </div>
 
-        <!-- Sidebar Footer / Currency Snapshot -->
+        <!-- Sidebar Currency Snapshot -->
         <div class="p-4 border-t border-pink-200/50 m-4 rounded-2xl bg-white/30 backdrop-blur-sm">
             <div class="flex items-center justify-between text-sm font-semibold">
-                <span><i class="fa-solid fa-coins text-amber-400 mr-2"></i>Aura Coins</span>
+                <span><i id="currency-icon-disp" class="fa-solid fa-coins text-amber-400 mr-2"></i>Nana Coins</span>
                 <span id="sidebar-coins" class="text-[var(--accent-color)] font-bold">0</span>
             </div>
         </div>
     </aside>
 
-    <!-- Expand Button (When Sidebar Collapsed) -->
     <button id="expand-btn" onclick="toggleSidebar()" class="absolute top-4 left-4 z-40 glass-panel p-3 rounded-full hidden text-[var(--text-main)] hover:scale-105 transition-transform">
         <i class="fa-solid fa-bars text-lg"></i>
     </button>
@@ -142,49 +134,47 @@
         
         <!-- Tab 1: Home View -->
         <div id="view-home" class="tab-view space-y-8 animate-fadeIn">
-            <!-- Header with Edit Button -->
             <div class="flex justify-between items-center">
                 <div>
-                    <h1 class="text-3xl font-bold tracking-tight text-[var(--heading-color)]">Welcome Back, Bestie ✨</h1>
-                    <p class="text-[var(--text-secondary)] mt-1">Your aesthetic universe, organized to perfection.</p>
+                    <h1 class="text-3xl font-bold tracking-tight text-[var(--heading-color)]">Welcome Back, <span id="editable-username" contenteditable="true" class="border-b border-dashed border-pink-400 outline-none px-1">User</span> ✨</h1>
                 </div>
                 <button onclick="openHomeEditModal()" class="glass-panel px-4 py-2 rounded-xl text-sm font-semibold hover:bg-white/80 flex items-center gap-2 transition-all">
-                    <i class="fa-solid fa-pen-to-square"></i> Edit Collage
+                    <i class="fa-solid fa-pen-to-square"></i> Edit Vision Board
                 </button>
             </div>
 
-            <!-- Manifestation Collage -->
-            <div id="collage-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-panel rounded-3xl p-4 overflow-hidden relative group h-64 flex flex-col justify-end bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/ffb6c1/ffffff?text=Manifestation+1');">
-                    <div class="absolute inset-0 bg-gradient-to-t from-pink-900/60 via-transparent to-transparent opacity-80"></div>
-                    <p class="relative z-10 text-white font-medium text-lg drop-shadow collage-text-1">"Dream big, sparkle more, shine bright."</p>
+            <!-- Vision Board Collage -->
+            <div id="vision-board-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel rounded-3xl p-2 overflow-hidden relative group h-64 flex flex-col justify-end bg-cover bg-center vision-card-1" style="background-image: url('https://placehold.co/600x400/ffb6c1/ffffff?text=Vision+1');">
+                    <div class="absolute inset-0 bg-gradient-to-t from-pink-900/40 via-transparent to-transparent"></div>
                 </div>
-                <div class="glass-panel rounded-3xl p-4 overflow-hidden relative group h-64 flex flex-col justify-end bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/ffc0cb/ffffff?text=Manifestation+2');">
-                    <div class="absolute inset-0 bg-gradient-to-t from-pink-900/60 via-transparent to-transparent opacity-80"></div>
-                    <p class="relative z-10 text-white font-medium text-lg drop-shadow collage-text-2">"Execute with fierce elegance."</p>
+                <div class="glass-panel rounded-3xl p-2 overflow-hidden relative group h-64 flex flex-col justify-end bg-cover bg-center vision-card-2" style="background-image: url('https://placehold.co/600x400/ffc0cb/ffffff?text=Vision+2');">
+                    <div class="absolute inset-0 bg-gradient-to-t from-pink-900/40 via-transparent to-transparent"></div>
                 </div>
-                <div class="glass-panel rounded-3xl p-4 overflow-hidden relative group h-64 flex flex-col justify-end bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/ffb6c1/ffffff?text=Manifestation+3');">
-                    <div class="absolute inset-0 bg-gradient-to-t from-pink-900/60 via-transparent to-transparent opacity-80"></div>
-                    <p class="relative z-10 text-white font-medium text-lg drop-shadow collage-text-3">"Everything is figureoutable."</p>
+                <div class="glass-panel rounded-3xl p-2 overflow-hidden relative group h-64 flex flex-col justify-end bg-cover bg-center vision-card-3" style="background-image: url('https://placehold.co/600x400/ffb6c1/ffffff?text=Vision+3');">
+                    <div class="absolute inset-0 bg-gradient-to-t from-pink-900/40 via-transparent to-transparent"></div>
                 </div>
             </div>
 
-            <!-- Scroll-Down Daily Snapshot -->
+            <!-- Daily Snapshot Widgets -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
-                <!-- Weather Widget -->
-                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between">
+                <!-- Weather Widget (Frosted Aero) -->
+                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between glow-pink">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-bold text-lg text-[var(--heading-color)]"><i class="fa-solid fa-cloud-sun mr-2"></i>Weather</h3>
                         <button onclick="editWeatherLocation()" class="text-xs text-[var(--text-secondary)] hover:text-[var(--accent-color)] underline font-medium">Edit Location</button>
                     </div>
                     <div class="flex items-center justify-between my-auto py-4">
                         <div>
-                            <h2 id="weather-location" class="text-2xl font-bold">New York, US</h2>
+                            <h2 id="weather-location" class="text-2xl font-bold">City, Country</h2>
                             <p id="weather-temp" class="text-4xl font-extrabold mt-1">72°F</p>
-                            <p id="weather-desc" class="text-sm font-medium mt-1 text-[var(--text-secondary)]">Sunny & Aero Glow</p>
+                            <p id="weather-desc" class="text-sm font-medium mt-1 text-[var(--text-secondary)]">Sunny</p>
                         </div>
-                        <div id="weather-icon-container" class="glass-panel w-20 h-20 rounded-2xl flex items-center justify-center text-3xl text-pink-500 glow-pink">
-                            <i class="fa-solid fa-sun animate-spin" style="animation-duration: 20s;"></i>
+                        <div id="weather-icon-container" class="glass-panel w-24 h-24 rounded-2xl flex items-center justify-center relative overflow-hidden p-1 shadow-inner bg-sky-200/50">
+                            <!-- Frosted Glass Aero Weather Graphic[cite: 5] -->
+                            <div class="absolute inset-0 bg-gradient-to-b from-sky-400/60 to-blue-500/40 backdrop-blur-sm"></div>
+                            <div class="relative z-10 w-12 h-12 rounded-full bg-gradient-to-tr from-amber-300 to-orange-400 shadow-lg border border-white/60 animate-pulse"></div>
+                            <i class="fa-solid fa-cloud text-white/90 absolute bottom-2 right-2 text-2xl drop-shadow"></i>
                         </div>
                     </div>
                 </div>
@@ -196,7 +186,7 @@
                         <button onclick="editCountdown()" class="text-xs text-[var(--text-secondary)] hover:text-[var(--accent-color)] underline font-medium">Edit Target</button>
                     </div>
                     <div class="my-auto text-center py-4">
-                        <h4 id="countdown-title" class="font-bold text-lg mb-2">Common App Deadline</h4>
+                        <h4 id="countdown-title" class="font-bold text-lg mb-2">Target Deadline</h4>
                         <div id="countdown-display" class="flex justify-center gap-3 text-xl font-extrabold">
                             <div class="glass-panel px-3 py-2 rounded-xl"><span id="cd-days">00</span><span class="block text-xs font-normal text-[var(--text-secondary)]">Days</span></div>
                             <div class="glass-panel px-3 py-2 rounded-xl"><span id="cd-hours">00</span><span class="block text-xs font-normal text-[var(--text-secondary)]">Hours</span></div>
@@ -206,15 +196,14 @@
                     </div>
                 </div>
 
-                <!-- Today's Task Feed -->
+                <!-- Today's Focus -->
                 <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-bold text-lg text-[var(--heading-color)]"><i class="fa-solid fa-bolt mr-2"></i>Today's Focus</h3>
                         <span class="text-xs px-2.5 py-1 rounded-full bg-pink-200/50 font-semibold" id="home-today-count">0 items</span>
                     </div>
                     <div id="home-today-list" class="space-y-2 overflow-y-auto max-h-40 pr-1">
-                        <!-- Populated by JS -->
-                        <p class="text-sm text-[var(--text-secondary)] italic text-center py-6">No tasks scheduled for today yet. Add one in Tasks!</p>
+                        <p class="text-sm text-[var(--text-secondary)] italic text-center py-6">No tasks scheduled for today yet.</p>
                     </div>
                 </div>
             </div>
@@ -231,16 +220,12 @@
                     <button onclick="openAddEventModal()" class="glass-panel px-4 py-2 rounded-xl font-semibold hover:bg-white/80 transition-all flex items-center gap-2">
                         <i class="fa-solid fa-plus"></i> Add Event
                     </button>
-                    <button onclick="openScheduleHistory()" class="glass-panel px-4 py-2 rounded-xl font-semibold hover:bg-white/80 transition-all flex items-center gap-2">
-                        <i class="fa-solid fa-clock-rotate-left"></i> History
-                    </button>
                 </div>
             </div>
 
             <!-- Schedule Grid Container -->
             <div class="glass-panel rounded-3xl p-4 overflow-x-auto">
                 <div class="min-w-[900px]">
-                    <!-- Days Header -->
                     <div class="grid grid-cols-8 gap-2 pb-4 border-b border-pink-200/50 text-center font-bold text-sm">
                         <div class="py-2 text-[var(--text-secondary)]">Time</div>
                         <div class="py-2 bg-white/40 rounded-xl">Sunday</div>
@@ -251,10 +236,7 @@
                         <div class="py-2 bg-white/40 rounded-xl">Friday</div>
                         <div class="py-2 bg-white/40 rounded-xl">Saturday</div>
                     </div>
-                    <!-- 24 Hour Rows -->
-                    <div id="schedule-time-grid" class="space-y-1 mt-3 max-h-[600px] overflow-y-auto pr-2">
-                        <!-- Generated via JS -->
-                    </div>
+                    <div id="schedule-time-grid" class="space-y-1 mt-3 max-h-[600px] overflow-y-auto pr-2"></div>
                 </div>
             </div>
         </div>
@@ -264,7 +246,7 @@
             <div class="flex justify-between items-center">
                 <div>
                     <h1 class="text-3xl font-bold tracking-tight text-[var(--heading-color)]">Interactive Calendar</h1>
-                    <p class="text-[var(--text-secondary)] mt-1">Full monthly & yearly tracking.</p>
+                    <p class="text-[var(--text-secondary)] mt-1">Click any date to inspect daily events & weather.</p>
                 </div>
                 <div class="flex items-center gap-3">
                     <button onclick="changeMonth(-1)" class="glass-panel px-4 py-2 rounded-xl font-bold hover:bg-white/80"><i class="fa-solid fa-chevron-left"></i></button>
@@ -274,39 +256,33 @@
             </div>
 
             <div class="glass-panel rounded-3xl p-6">
-                <!-- Days of week header -->
                 <div class="grid grid-cols-7 gap-2 mb-4 text-center font-bold text-sm text-[var(--text-secondary)]">
                     <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
                 </div>
-                <!-- Calendar Grid -->
-                <div id="calendar-days-grid" class="grid grid-cols-7 gap-3">
-                    <!-- Populated by JS -->
-                </div>
+                <div id="calendar-days-grid" class="grid grid-cols-7 gap-3"></div>
             </div>
         </div>
 
         <!-- Tab 4: Tasks & Inbox View -->
         <div id="view-tasks" class="tab-view space-y-6 hidden animate-fadeIn">
             <div>
-                <h1 class="text-3xl font-bold tracking-tight text-[var(--heading-color)]">Tasks & AI Smart Inbox</h1>
-                <p class="text-[var(--text-secondary)] mt-1">Type naturally and let AI parse, correct, and file your items.</p>
+                <h1 class="text-3xl font-bold tracking-tight text-[var(--heading-color)]">Tasks & Smart Inbox</h1>
+                <p class="text-[var(--text-secondary)] mt-1">Manage your schedule and checklist items efficiently.</p>
             </div>
 
-            <!-- AI Smart Input Box -->
+            <!-- AI Task Input Box -->
             <div class="glass-panel rounded-3xl p-6 glow-pink">
-                <label class="block font-semibold text-sm mb-2 text-[var(--heading-color)]"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI Natural Language Parser</label>
+                <label class="block font-semibold text-sm mb-2 text-[var(--heading-color)]"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI Task Input</label>
                 <div class="flex gap-3">
-                    <input type="text" id="ai-task-input" placeholder="e.g. Common app due thursday at 3pm or Spanish meeting Friday" class="glass-input flex-1 px-5 py-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-400 font-medium">
+                    <input type="text" id="ai-task-input" placeholder="e.g. Common app due Thursday at 3pm" class="glass-input flex-1 px-5 py-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-400 font-medium">
                     <button onclick="submitAITask()" class="glass-panel px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-400 to-pink-500 text-white font-bold hover:opacity-90 shadow-md">
                         <i class="fa-solid fa-arrow-right"></i> Add Item
                     </button>
                 </div>
-                <p class="text-xs text-[var(--text-secondary)] mt-2">💡 Tip: AI automatically cross-references past inputs (e.g. "CMM app" -> "Common App") and fixes grammar!</p>
             </div>
 
             <!-- Tasks Lists Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Today Column -->
                 <div class="glass-panel rounded-3xl p-5 flex flex-col">
                     <h3 class="font-bold text-lg mb-3 text-[var(--heading-color)] flex items-center justify-between">
                         <span><i class="fa-solid fa-sun text-amber-400 mr-2"></i>Today</span>
@@ -314,8 +290,6 @@
                     </h3>
                     <div id="task-list-today" class="space-y-3 overflow-y-auto max-h-[450px] pr-1 flex-1"></div>
                 </div>
-
-                <!-- Upcoming Column -->
                 <div class="glass-panel rounded-3xl p-5 flex flex-col">
                     <h3 class="font-bold text-lg mb-3 text-[var(--heading-color)] flex items-center justify-between">
                         <span><i class="fa-solid fa-calendar-week text-pink-400 mr-2"></i>Upcoming & Future</span>
@@ -323,8 +297,6 @@
                     </h3>
                     <div id="task-list-upcoming" class="space-y-3 overflow-y-auto max-h-[450px] pr-1 flex-1"></div>
                 </div>
-
-                <!-- Completed History Column -->
                 <div class="glass-panel rounded-3xl p-5 flex flex-col">
                     <h3 class="font-bold text-lg mb-3 text-[var(--heading-color)] flex items-center justify-between">
                         <span><i class="fa-solid fa-circle-check text-emerald-500 mr-2"></i>Completed History</span>
@@ -340,10 +312,10 @@
             <div class="flex justify-between items-center">
                 <div>
                     <h1 class="text-3xl font-bold tracking-tight text-[var(--heading-color)]">Study & Virtual Pet Sanctuary</h1>
-                    <p class="text-[var(--text-secondary)] mt-1">Complete tasks to earn Aura Coins, feed your pet, and level up!</p>
+                    <p class="text-[var(--text-secondary)] mt-1">Complete tasks to earn Nana Coins and care for your pet!</p>
                 </div>
                 <div class="glass-panel px-5 py-2.5 rounded-2xl flex items-center gap-3">
-                    <i class="fa-solid fa-coins text-amber-400 text-xl"></i>
+                    <i id="currency-icon-disp-study" class="fa-solid fa-coins text-amber-400 text-xl"></i>
                     <span id="pet-coins-display" class="font-extrabold text-lg text-[var(--heading-color)]">0 Coins</span>
                 </div>
             </div>
@@ -352,47 +324,42 @@
                 <!-- Center Stage: Virtual Pet -->
                 <div class="glass-panel rounded-3xl p-6 lg:col-span-2 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
                     <div class="absolute top-4 left-4 flex items-center gap-2">
-                        <span id="pet-name-display" class="font-bold text-xl text-[var(--heading-color)]">Mimi</span>
+                        <span id="pet-name-display" class="font-bold text-xl text-[var(--heading-color)]">Nana Cat</span>
                         <button onclick="openPetSettings()" class="text-xs text-[var(--text-secondary)] hover:text-[var(--accent-color)]"><i class="fa-solid fa-gear"></i></button>
                     </div>
-                    <div class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-white/50" id="pet-mood-display">Mood: Playful & Happy ✨</div>
+                    <div class="absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full bg-white/50" id="pet-mood-display">Mood: Happy ✨</div>
 
-                    <!-- Cartoon Pet Avatar (Aero/Feminine Cat) -->
-                    <div class="my-auto animate-float flex flex-col items-center cursor-pointer" onclick="feedPetClick()">
-                        <div id="pet-avatar-wrapper" class="w-48 h-48 rounded-full bg-pink-100/80 border-4 border-pink-300 flex items-center justify-center relative shadow-xl glow-pink">
-                            <!-- SVG Cartoon Cat -->
+                    <!-- Customized Blue Frosted Cat Pet Avatar (Reference[cite: 6]) -->
+                    <div class="my-auto animate-float flex flex-col items-center cursor-pointer" onclick="interactPet()">
+                        <div id="pet-avatar-wrapper" class="w-48 h-48 rounded-full bg-sky-200/80 border-4 border-blue-400 flex items-center justify-center relative shadow-xl glow-pink">
                             <svg viewBox="0 0 200 200" class="w-36 h-36 drop-shadow-md">
-                                <!-- Ears -->
-                                <polygon points="45,70 30,20 80,45" fill="#fbcfe8" stroke="#db2777" stroke-width="4"/>
-                                <polygon points="155,70 170,20 120,45" fill="#fbcfe8" stroke="#db2777" stroke-width="4"/>
-                                <!-- Head/Body -->
-                                <circle cx="100" cy="110" r="55" fill="#fff5f7" stroke="#db2777" stroke-width="4"/>
+                                <!-- Chunky Blue Cat Ears -->
+                                <polygon points="45,70 25,15 85,40" fill="#38bdf8" stroke="#0284c7" stroke-width="4" stroke-linejoin="round"/>
+                                <polygon points="155,70 175,15 115,40" fill="#38bdf8" stroke="#0284c7" stroke-width="4" stroke-linejoin="round"/>
+                                <!-- Head -->
+                                <circle cx="100" cy="110" r="55" fill="#bae6fd" stroke="#0284c7" stroke-width="4"/>
+                                <!-- Sparkles inside pet body -->
+                                <circle cx="75" cy="85" r="3" fill="#ffffff"/>
+                                <circle cx="125" cy="125" r="3" fill="#ffffff"/>
                                 <!-- Eyes -->
-                                <ellipse cx="80" cy="100" rx="6" ry="8" fill="#501529"/>
-                                <ellipse cx="120" cy="100" rx="6" ry="8" fill="#501529"/>
+                                <ellipse cx="80" cy="100" rx="5" ry="7" fill="#0369a1"/>
+                                <ellipse cx="120" cy="100" rx="5" ry="7" fill="#0369a1"/>
                                 <!-- Whiskers -->
-                                <line x1="45" y1="115" x2="25" y2="110" stroke="#db2777" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="45" y1="125" x2="25" y2="130" stroke="#db2777" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="155" y1="115" x2="175" y2="110" stroke="#db2777" stroke-width="2" stroke-linecap="round"/>
-                                <line x1="155" y1="125" x2="175" y2="130" stroke="#db2777" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="45" y1="115" x2="25" y2="110" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
+                                <line x1="45" y1="125" x2="25" y2="130" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
+                                <line x1="155" y1="115" x2="175" y2="110" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
+                                <line x1="155" y1="125" x2="175" y2="130" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
                                 <!-- Nose & Mouth -->
-                                <polygon points="95,112 105,112 100,118" fill="#ec4899"/>
-                                <path d="M 95 118 Q 100 125 105 118" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round"/>
-                                <!-- Bow / Aero accessory -->
-                                <circle cx="100" cy="55" r="8" fill="#ec4899"/>
-                                <polygon points="90,50 75,40 85,60" fill="#f472b6"/>
-                                <polygon points="110,50 125,40 115,60" fill="#f472b6"/>
+                                <polygon points="95,112 105,112 100,118" fill="#0369a1"/>
+                                <path d="M 95 118 Q 100 125 105 118" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                         <p class="text-xs text-[var(--text-secondary)] mt-4 font-medium italic">Click pet to interact!</p>
                     </div>
 
-                    <!-- Quick Study Tasks Checklist -->
                     <div class="w-full mt-6 bg-white/40 p-4 rounded-2xl">
-                        <h4 class="font-bold text-sm mb-2 text-[var(--heading-color)]"><i class="fa-solid fa-list-check mr-2"></i>Study Task Checklist (Earn Coins!)</h4>
-                        <div id="study-tasks-container" class="space-y-2 max-h-32 overflow-y-auto">
-                            <!-- Populated by JS -->
-                        </div>
+                        <h4 class="font-bold text-sm mb-2 text-[var(--heading-color)]"><i class="fa-solid fa-list-check mr-2"></i>Study Checklist</h4>
+                        <div id="study-tasks-container" class="space-y-2 max-h-32 overflow-y-auto"></div>
                     </div>
                 </div>
 
@@ -400,9 +367,7 @@
                 <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between">
                     <div>
                         <h3 class="font-bold text-lg mb-4 text-[var(--heading-color)]"><i class="fa-solid fa-store mr-2"></i>Pet Boutique & Shop</h3>
-                        <div id="shop-items-container" class="space-y-3 max-h-[320px] overflow-y-auto pr-1">
-                            <!-- Populated via JS -->
-                        </div>
+                        <div id="shop-items-container" class="space-y-3 max-h-[320px] overflow-y-auto pr-1"></div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-pink-200/50">
                         <button onclick="openShopEditor()" class="w-full glass-panel py-2.5 rounded-xl font-semibold text-sm hover:bg-white/80 transition-all flex items-center justify-center gap-2">
@@ -413,9 +378,9 @@
             </div>
         </div>
 
-        <!-- Footer / Bottom-Right Color Wheel Widget -->
+        <!-- Page Customizer Footer -->
         <footer class="mt-12 pt-6 border-t border-pink-200/50 flex flex-col md:flex-row justify-between items-center text-xs text-[var(--text-secondary)]">
-            <p>AuraLife Organizer • Designed for GitHub Pages & Ultimate Aesthetics ✨</p>
+            <p>Nana Organizer ✨</p>
             <div class="flex items-center gap-4 mt-2 md:mt-0">
                 <span>Page Customizer</span>
                 <button onclick="openColorWheelModal()" class="glass-panel w-10 h-10 rounded-full flex items-center justify-center text-[var(--accent-color)] hover:scale-110 transition-transform shadow-md glow-pink">
@@ -423,25 +388,30 @@
                 </button>
             </div>
         </footer>
-
     </main>
 
-    <!-- Color Wheel / Page Customization Modal -->
+    <!-- Modals -->
     <div id="modal-colorwheel" class="fixed inset-0 bg-pink-950/30 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel rounded-3xl p-6 w-full max-w-md space-y-4 shadow-2xl bg-white/90">
             <div class="flex justify-between items-center border-b border-pink-200 pb-3">
-                <h3 class="font-bold text-lg text-[var(--heading-color)]"><i class="fa-solid fa-palette mr-2"></i>Customize Current Page</h3>
+                <h3 class="font-bold text-lg text-[var(--heading-color)]"><i class="fa-solid fa-palette mr-2"></i>Page Customizer</h3>
                 <button onclick="closeModal('modal-colorwheel')" class="text-gray-500 hover:text-black"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="space-y-4 text-sm font-medium">
                 <div>
-                    <label class="block mb-1">Background Gradient</label>
-                    <select id="setting-bg" class="glass-input w-full p-2.5 rounded-xl">
-                        <option value="linear-gradient(135deg, #ffe4ec 0%, #fff0f5 50%, #ffb6c1 100%)">Bubblegum & Rose</option>
-                        <option value="linear-gradient(135deg, #fff0f5 0%, #ffe4e6 50%, #fbcfe8 100%)">Soft Aero Pink</option>
-                        <option value="linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #f472b6 100%)">Hot Glamour Pink</option>
-                        <option value="linear-gradient(135deg, #ffffff 0%, #fff1f2 50%, #ffe4e6 100%)">Pearl & White</option>
+                    <label class="block mb-1">Preset Gradient Background</label>
+                    <select id="setting-bg" class="glass-input w-full p-2.5 rounded-xl" onchange="toggleCustomBgInput(this.value)">
+                        <option value="gradient">Bubblegum & Rose Gradient</option>
+                        <option value="custom">Custom Color / Image URL</option>
                     </select>
+                </div>
+                <div id="custom-bg-wrapper" class="hidden">
+                    <label class="block mb-1">Custom Background (Color or Image URL)</label>
+                    <input type="text" id="setting-custom-bg" placeholder="e.g. #ffe4ec or url('...')" class="glass-input w-full p-2.5 rounded-xl">
+                </div>
+                <div>
+                    <label class="block mb-1">Currency Icon FontAwesome Class</label>
+                    <input type="text" id="setting-currency-icon" value="fa-coins" class="glass-input w-full p-2.5 rounded-xl" placeholder="e.g. fa-coins or fa-star">
                 </div>
                 <div>
                     <label class="block mb-1">Heading Color</label>
@@ -452,25 +422,8 @@
                     <input type="color" id="setting-text" value="#6b213a" class="w-full h-10 rounded-xl cursor-pointer">
                 </div>
                 <div>
-                    <label class="block mb-1">Secondary Text Color</label>
-                    <input type="color" id="setting-secondary" value="#883955" class="w-full h-10 rounded-xl cursor-pointer">
-                </div>
-                <div>
                     <label class="block mb-1">Accent / Glow Color</label>
                     <input type="color" id="setting-accent" value="#ff69b4" class="w-full h-10 rounded-xl cursor-pointer">
-                </div>
-                <div>
-                    <label class="block mb-1">Typography</label>
-                    <select id="setting-font" class="glass-input w-full p-2.5 rounded-xl">
-                        <option value="'Times New Roman', Times, serif">Times New Roman</option>
-                        <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
-                        <option value="Georgia, serif">Georgia</option>
-                        <option value="Courier New, monospace">Courier New</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block mb-1">Glass Card Opacity (<span id="opacity-val">0.85</span>)</label>
-                    <input type="range" id="setting-opacity" min="0.4" max="1.0" step="0.05" value="0.85" class="w-full accent-pink-500" oninput="document.getElementById('opacity-val').innerText = this.value">
                 </div>
             </div>
             <div class="flex justify-end gap-3 pt-3">
@@ -480,35 +433,35 @@
         </div>
     </div>
 
-    <!-- Home Edit Modal -->
+    <!-- Vision Board Edit Modal -->
     <div id="modal-home-edit" class="fixed inset-0 bg-pink-950/30 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel rounded-3xl p-6 w-full max-w-lg space-y-4 shadow-2xl bg-white/90">
             <div class="flex justify-between items-center border-b border-pink-200 pb-3">
-                <h3 class="font-bold text-lg text-[var(--heading-color)]">Edit Manifestation Collage</h3>
+                <h3 class="font-bold text-lg text-[var(--heading-color)]">Edit Vision Board Images</h3>
                 <button onclick="closeModal('modal-home-edit')" class="text-gray-500 hover:text-black"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="space-y-3 text-sm">
                 <div>
-                    <label class="block font-semibold mb-1">Quote 1</label>
-                    <input type="text" id="edit-q1" class="glass-input w-full p-2.5 rounded-xl" value='"Dream big, sparkle more, shine bright."'>
+                    <label class="block font-semibold mb-1">Image URL 1</label>
+                    <input type="text" id="edit-img1" class="glass-input w-full p-2.5 rounded-xl" placeholder="Paste image link">
                 </div>
                 <div>
-                    <label class="block font-semibold mb-1">Quote 2</label>
-                    <input type="text" id="edit-q2" class="glass-input w-full p-2.5 rounded-xl" value='"Execute with fierce elegance."'>
+                    <label class="block font-semibold mb-1">Image URL 2</label>
+                    <input type="text" id="edit-img2" class="glass-input w-full p-2.5 rounded-xl" placeholder="Paste image link">
                 </div>
                 <div>
-                    <label class="block font-semibold mb-1">Quote 3</label>
-                    <input type="text" id="edit-q3" class="glass-input w-full p-2.5 rounded-xl" value='"Everything is figureoutable."'>
+                    <label class="block font-semibold mb-1">Image URL 3</label>
+                    <input type="text" id="edit-img3" class="glass-input w-full p-2.5 rounded-xl" placeholder="Paste image link">
                 </div>
             </div>
             <div class="flex justify-end gap-3 pt-3">
                 <button onclick="closeModal('modal-home-edit')" class="px-4 py-2 rounded-xl text-sm font-semibold glass-panel">Cancel</button>
-                <button onclick="saveHomeCollage()" class="px-5 py-2 rounded-xl text-sm font-bold bg-pink-500 text-white shadow-md">Save Collage</button>
+                <button onclick="saveVisionBoard()" class="px-5 py-2 rounded-xl text-sm font-bold bg-pink-500 text-white shadow-md">Save Board</button>
             </div>
         </div>
     </div>
 
-    <!-- Weather Edit Modal -->
+    <!-- Weather Location Edit Modal -->
     <div id="modal-weather-edit" class="fixed inset-0 bg-pink-950/30 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel rounded-3xl p-6 w-full max-w-sm space-y-4 shadow-2xl bg-white/90">
             <div class="flex justify-between items-center border-b border-pink-200 pb-3">
@@ -517,17 +470,13 @@
             </div>
             <div class="space-y-3 text-sm">
                 <div>
-                    <label class="block font-semibold mb-1">City, Country</label>
-                    <input type="text" id="edit-weather-loc" class="glass-input w-full p-2.5 rounded-xl" value="New York, US">
-                </div>
-                <div>
-                    <label class="block font-semibold mb-1">Temperature</label>
-                    <input type="text" id="edit-weather-temp" class="glass-input w-full p-2.5 rounded-xl" value="72°F">
+                    <label class="block font-semibold mb-1">City, Country (e.g. Tokyo, JP)</label>
+                    <input type="text" id="edit-weather-loc" class="glass-input w-full p-2.5 rounded-xl">
                 </div>
             </div>
             <div class="flex justify-end gap-3 pt-3">
                 <button onclick="closeModal('modal-weather-edit')" class="px-4 py-2 rounded-xl text-sm font-semibold glass-panel">Cancel</button>
-                <button onclick="saveWeatherLocation()" class="px-5 py-2 rounded-xl text-sm font-bold bg-pink-500 text-white shadow-md">Save</button>
+                <button onclick="saveWeatherLocation()" class="px-5 py-2 rounded-xl text-sm font-bold bg-pink-500 text-white shadow-md">Sync Weather</button>
             </div>
         </div>
     </div>
@@ -541,8 +490,8 @@
             </div>
             <div class="space-y-3 text-sm">
                 <div>
-                    <label class="block font-semibold mb-1">Countdown Title</label>
-                    <input type="text" id="edit-cd-title" class="glass-input w-full p-2.5 rounded-xl" value="Common App Deadline">
+                    <label class="block font-semibold mb-1">Title</label>
+                    <input type="text" id="edit-cd-title" class="glass-input w-full p-2.5 rounded-xl">
                 </div>
                 <div>
                     <label class="block font-semibold mb-1">Target Date & Time</label>
@@ -572,40 +521,40 @@
                     <div>
                         <label class="block font-semibold mb-1">Day of Week</label>
                         <select id="sch-day" class="glass-input w-full p-2.5 rounded-xl">
-                            <option value="0">Sunday</option>
-                            <option value="1">Monday</option>
-                            <option value="2">Tuesday</option>
-                            <option value="3">Wednesday</option>
-                            <option value="4">Thursday</option>
-                            <option value="5">Friday</option>
-                            <option value="6">Saturday</option>
+                            <option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block font-semibold mb-1">Hour (0 - 23)</label>
+                        <label class="block font-semibold mb-1">Hour (0-23)</label>
                         <input type="number" id="sch-hour" min="0" max="23" value="15" class="glass-input w-full p-2.5 rounded-xl">
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
+                        <label class="block font-semibold mb-1">Minute (0-59)</label>
+                        <input type="number" id="sch-minute" min="0" max="59" value="0" class="glass-input w-full p-2.5 rounded-xl">
+                    </div>
+                    <div>
                         <label class="block font-semibold mb-1">Color Theme</label>
                         <input type="color" id="sch-color" value="#ff69b4" class="w-full h-10 rounded-xl cursor-pointer">
                     </div>
-                    <div>
-                        <label class="block font-semibold mb-1">Opacity</label>
-                        <input type="range" id="sch-opacity" min="0.3" max="1.0" step="0.1" value="0.8" class="w-full accent-pink-500 mt-2">
-                    </div>
-                </div>
-                <div>
-                    <label class="flex items-center gap-2 mt-2 font-semibold">
-                        <input type="checkbox" id="sch-apply-all" class="accent-pink-500 w-4 h-4"> Apply to all days of the week
-                    </label>
                 </div>
             </div>
             <div class="flex justify-end gap-3 pt-3">
                 <button onclick="closeModal('modal-schedule-event')" class="px-4 py-2 rounded-xl text-sm font-semibold glass-panel">Cancel</button>
                 <button onclick="saveScheduleEvent()" class="px-5 py-2 rounded-xl text-sm font-bold bg-pink-500 text-white shadow-md">Save Event</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Calendar Day Detail Modal -->
+    <div id="modal-cal-day" class="fixed inset-0 bg-pink-950/30 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-panel rounded-3xl p-6 w-full max-w-md space-y-4 shadow-2xl bg-white/90">
+            <div class="flex justify-between items-center border-b border-pink-200 pb-3">
+                <h3 id="cal-modal-title" class="font-bold text-lg text-[var(--heading-color)]">Events for Date</h3>
+                <button onclick="closeModal('modal-cal-day')" class="text-gray-500 hover:text-black"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="cal-modal-content" class="space-y-3 max-h-[300px] overflow-y-auto text-sm"></div>
         </div>
     </div>
 
@@ -619,16 +568,11 @@
             <div class="space-y-3 text-sm">
                 <div>
                     <label class="block font-semibold mb-1">Pet Name</label>
-                    <input type="text" id="pet-name-input" class="glass-input w-full p-2.5 rounded-xl" value="Mimi">
+                    <input type="text" id="pet-name-input" class="glass-input w-full p-2.5 rounded-xl">
                 </div>
                 <div>
-                    <label class="block font-semibold mb-1">Temperament & Nature</label>
-                    <select id="pet-temperament" class="glass-input w-full p-2.5 rounded-xl">
-                        <option value="Playful & Energetic">Playful & Energetic</option>
-                        <option value="Calm & Sleepy">Calm & Sleepy</option>
-                        <option value="Sassy & Picky">Sassy & Picky</option>
-                        <option value="Sweet & Affectionate">Sweet & Affectionate</option>
-                    </select>
+                    <label class="block font-semibold mb-1">Temperament / Personality</label>
+                    <input type="text" id="pet-temp-input" class="glass-input w-full p-2.5 rounded-xl" value="Playful & Energetic">
                 </div>
             </div>
             <div class="flex justify-end gap-3 pt-3">
@@ -642,12 +586,10 @@
     <div id="modal-shop-editor" class="fixed inset-0 bg-pink-950/30 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel rounded-3xl p-6 w-full max-w-md space-y-4 shadow-2xl bg-white/90">
             <div class="flex justify-between items-center border-b border-pink-200 pb-3">
-                <h3 class="font-bold text-lg text-[var(--heading-color)]">Edit Shop Items</h3>
+                <h3 class="font-bold text-lg text-[var(--heading-color)]">Edit Shop Items & Appearance</h3>
                 <button onclick="closeModal('modal-shop-editor')" class="text-gray-500 hover:text-black"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            <div id="shop-editor-list" class="space-y-3 max-h-[300px] overflow-y-auto pr-1 text-sm">
-                <!-- Populated by JS -->
-            </div>
+            <div id="shop-editor-list" class="space-y-3 max-h-[300px] overflow-y-auto pr-1 text-sm"></div>
             <div class="flex justify-end gap-3 pt-3">
                 <button onclick="closeModal('modal-shop-editor')" class="px-4 py-2 rounded-xl text-sm font-semibold glass-panel">Cancel</button>
                 <button onclick="saveShopEditor()" class="px-5 py-2 rounded-xl text-sm font-bold bg-pink-500 text-white shadow-md">Save Changes</button>
@@ -656,83 +598,60 @@
     </div>
 
     <script>
-        // --- State Management & Persistence ---
         let currentTab = 'home';
         let isSidebarOpen = true;
 
         let appData = {
-            coins: parseInt(localStorage.getItem('aura_coins')) || 150,
-            tasks: JSON.parse(localStorage.getItem('aura_tasks')) || [
-                { id: 1, title: "Common App due Thursday", date: "2026-10-08", time: "23:59", category: "College Apps", priority: true, completed: false },
-                { id: 2, title: "Spanish Class meeting", date: "2026-10-09", time: "14:00", category: "Spanish class", priority: false, completed: false }
+            coins: parseInt(localStorage.getItem('nana_coins')) || 150,
+            userName: localStorage.getItem('nana_username') || "User",
+            currencyIcon: localStorage.getItem('nana_currency_icon') || "fa-coins",
+            tasks: JSON.parse(localStorage.getItem('nana_tasks')) || [
+                { id: 1, title: "Common App due Thursday", date: "2026-10-08", time: "23:59", category: "College Apps", priority: true, completed: false }
             ],
-            scheduleEvents: JSON.parse(localStorage.getItem('aura_schedule')) || [
-                { id: 1, title: "Piano Practice", day: 0, hour: 15, color: "#ff69b4", opacity: 0.8 },
-                { id: 2, title: "Common App Essay", day: 4, hour: 18, color: "#db2777", opacity: 0.9 }
+            scheduleEvents: JSON.parse(localStorage.getItem('nana_schedule')) || [
+                { id: 1, title: "Piano Practice", day: 0, hour: 15, minute: 30, color: "#ff69b4" }
             ],
-            pet: JSON.parse(localStorage.getItem('aura_pet')) || {
-                name: "Mimi",
-                temperament: "Playful & Energetic",
-                mood: "Happy & Radiant ✨"
-            },
-            shopItems: JSON.parse(localStorage.getItem('aura_shop')) || [
-                { id: 1, name: "Gourmet Cat Treats", price: 30, icon: "fa-fish", category: "food" },
-                { id: 2, name: "Pink Strawberry Milk", price: 20, icon: "fa-mug-hot", category: "drink" },
-                { id: 3, name: "Feather Wand Toy", price: 45, icon: "fa-wand-magic", category: "toy" },
-                { id: 4, name: "Glitter Litter Box", price: 80, icon: "fa-box", category: "litter" }
+            pet: JSON.parse(localStorage.getItem('nana_pet')) || { name: "Nana Cat", temperament: "Playful & Energetic", mood: "Happy ✨" },
+            shopItems: JSON.parse(localStorage.getItem('nana_shop')) || [
+                { id: 1, name: "Gourmet Cat Treats", price: 30, icon: "fa-fish" },
+                { id: 2, name: "Pink Strawberry Milk", price: 20, icon: "fa-mug-hot" }
             ],
-            pastHistory: JSON.parse(localStorage.getItem('aura_history')) || [],
-            homeCollage: JSON.parse(localStorage.getItem('aura_collage')) || {
-                q1: '"Dream big, sparkle more, shine bright."',
-                q2: '"Execute with fierce elegance."',
-                q3: '"Everything is figureoutable."'
+            visionBoard: JSON.parse(localStorage.getItem('nana_vision')) || {
+                img1: "https://placehold.co/600x400/ffb6c1/ffffff?text=Vision+1",
+                img2: "https://placehold.co/600x400/ffc0cb/ffffff?text=Vision+2",
+                img3: "https://placehold.co/600x400/ffb6c1/ffffff?text=Vision+3"
             },
-            weather: JSON.parse(localStorage.getItem('aura_weather')) || {
-                location: "New York, US",
-                temp: "72°F"
-            },
-            countdown: JSON.parse(localStorage.getItem('aura_countdown')) || {
-                title: "Common App Deadline",
-                target: "2026-10-08T23:59"
-            },
-            customizations: JSON.parse(localStorage.getItem('aura_customizations')) || {
-                home: { bg: "linear-gradient(135deg, #ffe4ec 0%, #fff0f5 50%, #ffb6c1 100%)", heading: "#501529", text: "#6b213a", secondary: "#883955", accent: "#ff69b4", font: "'Times New Roman', Times, serif", opacity: "0.85" },
-                schedule: { bg: "linear-gradient(135deg, #ffe4ec 0%, #fff0f5 50%, #ffb6c1 100%)", heading: "#501529", text: "#6b213a", secondary: "#883955", accent: "#ff69b4", font: "'Times New Roman', Times, serif", opacity: "0.85" },
-                calendar: { bg: "linear-gradient(135deg, #ffe4ec 0%, #fff0f5 50%, #ffb6c1 100%)", heading: "#501529", text: "#6b213a", secondary: "#883955", accent: "#ff69b4", font: "'Times New Roman', Times, serif", opacity: "0.85" },
-                tasks: { bg: "linear-gradient(135deg, #ffe4ec 0%, #fff0f5 50%, #ffb6c1 100%)", heading: "#501529", text: "#6b213a", secondary: "#883955", accent: "#ff69b4", font: "'Times New Roman', Times, serif", opacity: "0.85" },
-                study: { bg: "linear-gradient(135deg, #ffe4ec 0%, #fff0f5 50%, #ffb6c1 100%)", heading: "#501529", text: "#6b213a", secondary: "#883955", accent: "#ff69b4", font: "'Times New Roman', Times, serif", opacity: "0.85" }
+            weather: JSON.parse(localStorage.getItem('nana_weather')) || { location: "New York, US", temp: "72°F", desc: "Sunny" },
+            countdown: JSON.parse(localStorage.getItem('nana_countdown')) || { title: "Common App Deadline", target: "2026-10-08T23:59" },
+            customizations: JSON.parse(localStorage.getItem('nana_customizations')) || {
+                bg: "linear-gradient(135deg, #ffe4ec 0%, #fff0f5 50%, #ffb6c1 100%)", heading: "#501529", text: "#6b213a", accent: "#ff69b4"
             }
         };
 
-        // Save helper
         function saveData() {
-            localStorage.setItem('aura_coins', appData.coins);
-            localStorage.setItem('aura_tasks', JSON.stringify(appData.tasks));
-            localStorage.setItem('aura_schedule', JSON.stringify(appData.scheduleEvents));
-            localStorage.setItem('aura_pet', JSON.stringify(appData.pet));
-            localStorage.setItem('aura_shop', JSON.stringify(appData.shopItems));
-            localStorage.setItem('aura_history', JSON.stringify(appData.pastHistory));
-            localStorage.setItem('aura_collage', JSON.stringify(appData.homeCollage));
-            localStorage.setItem('aura_weather', JSON.stringify(appData.weather));
-            localStorage.setItem('aura_countdown', JSON.stringify(appData.countdown));
-            localStorage.setItem('aura_customizations', JSON.stringify(appData.customizations));
+            localStorage.setItem('nana_coins', appData.coins);
+            localStorage.setItem('nana_username', document.getElementById('editable-username')?.innerText || appData.userName);
+            localStorage.setItem('nana_currency_icon', appData.currencyIcon);
+            localStorage.setItem('nana_tasks', JSON.stringify(appData.tasks));
+            localStorage.setItem('nana_schedule', JSON.stringify(appData.scheduleEvents));
+            localStorage.setItem('nana_pet', JSON.stringify(appData.pet));
+            localStorage.setItem('nana_shop', JSON.stringify(appData.shopItems));
+            localStorage.setItem('nana_vision', JSON.stringify(appData.visionBoard));
+            localStorage.setItem('nana_weather', JSON.stringify(appData.weather));
+            localStorage.setItem('nana_countdown', JSON.stringify(appData.countdown));
+            localStorage.setItem('nana_customizations', JSON.stringify(appData.customizations));
             updateUI();
         }
 
-        // --- Navigation & Views ---
         function switchTab(tabId) {
             currentTab = tabId;
             document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
             document.getElementById(`view-${tabId}`).classList.remove('hidden');
 
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.dataset.tab === tabId) {
-                    btn.classList.add('bg-white/70', 'shadow-sm', 'text-[var(--heading-color)]');
-                } else {
-                    btn.classList.remove('bg-white/70', 'shadow-sm', 'text-[var(--heading-color)]');
-                }
+                if(btn.dataset.tab === tabId) btn.classList.add('bg-white/70', 'shadow-sm', 'text-[var(--heading-color)]');
+                else btn.classList.remove('bg-white/70', 'shadow-sm', 'text-[var(--heading-color)]');
             });
-
             applyPageStyles();
             renderCurrentView();
         }
@@ -753,19 +672,24 @@
         }
 
         function applyPageStyles() {
-            const styleObj = appData.customizations[currentTab] || appData.customizations.home;
-            document.documentElement.style.setProperty('--bg-gradient', styleObj.bg);
-            document.documentElement.style.setProperty('--heading-color', styleObj.heading);
-            document.documentElement.style.setProperty('--text-main', styleObj.text);
-            document.documentElement.style.setProperty('--text-secondary', styleObj.secondary);
-            document.documentElement.style.setProperty('--accent-color', styleObj.accent);
-            document.documentElement.style.setProperty('--font-family', styleObj.font);
-            document.documentElement.style.setProperty('--card-opacity', styleObj.opacity);
+            const st = appData.customizations;
+            document.documentElement.style.setProperty('--bg-gradient', st.bg);
+            document.documentElement.style.setProperty('--heading-color', st.heading);
+            document.documentElement.style.setProperty('--text-main', st.text);
+            document.documentElement.style.setProperty('--accent-color', st.accent);
+            
+            const currIconEl = document.getElementById('currency-icon-disp');
+            const currIconStudy = document.getElementById('currency-icon-disp-study');
+            if(currIconEl) currIconEl.className = `fa-solid ${appData.currencyIcon} text-amber-400 mr-2`;
+            if(currIconStudy) currIconStudy.className = `fa-solid ${appData.currencyIcon} text-amber-400 text-xl`;
         }
 
         function renderCurrentView() {
             document.getElementById('sidebar-coins').innerText = appData.coins;
-            document.getElementById('pet-coins-display').innerText = `${appData.coins} Coins`;
+            document.getElementById('pet-coins-display').innerText = `${appData.coins} Nana Coins`;
+            if(document.getElementById('editable-username') && document.getElementById('editable-username').innerText === "User") {
+                document.getElementById('editable-username').innerText = appData.userName;
+            }
 
             if(currentTab === 'home') renderHomeView();
             else if(currentTab === 'schedule') renderScheduleView();
@@ -774,54 +698,46 @@
             else if(currentTab === 'study') renderStudyView();
         }
 
-        // --- Tab 1: Home Logic ---
         function renderHomeView() {
-            document.querySelector('.collage-text-1').innerText = appData.homeCollage.q1;
-            document.querySelector('.collage-text-2').innerText = appData.homeCollage.q2;
-            document.querySelector('.collage-text-3').innerText = appData.homeCollage.q3;
+            document.querySelector('.vision-card-1').style.backgroundImage = `url('${appData.visionBoard.img1}')`;
+            document.querySelector('.vision-card-2').style.backgroundImage = `url('${appData.visionBoard.img2}')`;
+            document.querySelector('.vision-card-3').style.backgroundImage = `url('${appData.visionBoard.img3}')`;
 
             document.getElementById('weather-location').innerText = appData.weather.location;
             document.getElementById('weather-temp').innerText = appData.weather.temp;
+            document.getElementById('weather-desc').innerText = appData.weather.desc;
 
-            // Today tasks list
             const todayStr = new Date().toISOString().split('T')[0];
             const todayTasks = appData.tasks.filter(t => t.date === todayStr && !t.completed);
             document.getElementById('home-today-count').innerText = `${todayTasks.length} items`;
             const container = document.getElementById('home-today-list');
             
             if(todayTasks.length === 0) {
-                container.innerHTML = `<p class="text-sm text-[var(--text-secondary)] italic text-center py-6">No tasks scheduled for today yet. Add one in Tasks!</p>`;
+                container.innerHTML = `<p class="text-sm text-[var(--text-secondary)] italic text-center py-6">No tasks scheduled for today yet.</p>`;
             } else {
                 container.innerHTML = todayTasks.map(t => `
                     <div class="glass-panel p-3 rounded-2xl flex items-center justify-between text-sm">
-                        <span class="font-medium ${t.priority ? 'font-bold text-[var(--accent-color)]' : ''}">${t.title}</span>
+                        <span class="font-medium">${t.title}</span>
                         <span class="text-xs px-2 py-0.5 rounded bg-white/60">${t.time || 'All Day'}</span>
                     </div>
                 `).join('');
             }
         }
 
-        // Countdown Timer Interval
+        // Countdown interval
         setInterval(() => {
             const target = new Date(appData.countdown.target).getTime();
             const now = new Date().getTime();
             const diff = target - now;
-
             if(diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
-                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('cd-mins').innerText = String(mins).padStart(2, '0');
-                document.getElementById('cd-secs').innerText = String(secs).padStart(2, '0');
+                document.getElementById('cd-days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('cd-hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('cd-mins').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('cd-secs').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
                 document.getElementById('countdown-title').innerText = appData.countdown.title;
             }
         }, 1000);
 
-        // --- Tab 2: Schedule Logic ---
         function renderScheduleView() {
             const grid = document.getElementById('schedule-time-grid');
             let html = '';
@@ -832,12 +748,10 @@
                 
                 for(let day = 0; day < 7; day++) {
                     const matchedEvents = appData.scheduleEvents.filter(e => e.day === day && e.hour === hour);
-                    html += `<div class="glass-panel min-h-[50px] rounded-xl p-1.5 relative flex flex-col justify-center items-center text-center cursor-pointer hover:border-pink-400 transition-all" onclick="openAddEventModalWithTime(${day}, ${hour})">`;
-                    
+                    html += `<div class="glass-panel min-h-[60px] rounded-xl p-1.5 relative flex flex-col justify-center items-center text-center cursor-pointer hover:border-pink-400 transition-all" onclick="expandScheduleBlock(${day}, ${hour})">`;
                     matchedEvents.forEach(ev => {
-                        html += `<div class="w-full rounded-lg p-1 text-white text-[11px] font-bold shadow-sm my-0.5 truncate" style="background-color: ${ev.color}; opacity: ${ev.opacity};">${ev.title}</div>`;
+                        html += `<div class="w-full rounded-lg p-1 text-white text-[11px] font-bold shadow-sm my-0.5 truncate" style="background-color: ${ev.color};">${ev.title} (${ev.minute}m)</div>`;
                     });
-
                     html += `</div>`;
                 }
                 html += `</div>`;
@@ -845,10 +759,15 @@
             grid.innerHTML = html;
         }
 
-        // --- Tab 3: Calendar Logic ---
-        let calYear = 2026;
-        let calMonth = 9; // October (0-indexed)
+        function expandScheduleBlock(day, hour) {
+            const matched = appData.scheduleEvents.filter(e => e.day === day && e.hour === hour);
+            const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            document.getElementById('cal-modal-title').innerText = `${daysOfWeek[day]} at ${hour}:00`;
+            document.getElementById('cal-modal-content').innerHTML = matched.length ? matched.map(m => `<div class="glass-panel p-3 rounded-xl font-bold">${m.title} - Minute: ${m.minute}</div>`).join('') : `<p class="italic text-gray-500">No events scheduled for this exact hour.</p>`;
+            document.getElementById('modal-cal-day').classList.remove('hidden');
+        }
 
+        let calYear = 2026, calMonth = 9;
         function changeMonth(dir) {
             calMonth += dir;
             if(calMonth > 11) { calMonth = 0; calYear++; }
@@ -859,75 +778,38 @@
         function renderCalendarView() {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             document.getElementById('calendar-month-year').innerText = `${months[calMonth]} ${calYear}`;
-
             const firstDay = new Date(calYear, calMonth, 1).getDay();
             const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-
             const grid = document.getElementById('calendar-days-grid');
             let html = '';
 
-            // Blank slots for previous month padding
             for(let i = 0; i < firstDay; i++) {
                 html += `<div class="glass-panel opacity-40 rounded-2xl min-h-[90px] p-2"></div>`;
             }
-
             for(let day = 1; day <= daysInMonth; day++) {
                 const dateStr = `${calYear}-${String(calMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
                 const dayTasks = appData.tasks.filter(t => t.date === dateStr);
-
-                html += `<div class="glass-panel rounded-2xl min-h-[90px] p-2 flex flex-col justify-between hover:bg-white/80 transition-all">
-                    <span class="font-bold text-sm text-[var(--heading-color)]">${day}</span>
-                    <div class="space-y-1 overflow-y-auto max-h-[60px]">
+                html += `<div onclick="openCalendarDay('${dateStr}')" class="glass-panel rounded-2xl min-h-[90px] p-2 flex flex-col justify-between hover:bg-white/90 transition-all cursor-pointer">
+                    <div class="flex justify-between items-center"><span class="font-bold text-sm text-[var(--heading-color)]">${day}</span><i class="fa-solid fa-sun text-amber-400 text-xs"></i></div>
+                    <div class="space-y-1 overflow-y-auto max-h-[50px]">
                         ${dayTasks.map(t => `<div class="text-[10px] font-semibold bg-pink-200/60 rounded px-1.5 py-0.5 truncate">${t.title}</div>`).join('')}
                     </div>
                 </div>`;
             }
-
             grid.innerHTML = html;
         }
 
-        // --- Tab 4: Tasks & AI Smart Inbox Logic ---
+        function openCalendarDay(dateStr) {
+            const dayTasks = appData.tasks.filter(t => t.date === dateStr);
+            document.getElementById('cal-modal-title').innerText = `Date: ${dateStr} (Weather: Sunny ☀️)`;
+            document.getElementById('cal-modal-content').innerHTML = dayTasks.length ? dayTasks.map(t => `<div class="glass-panel p-2 rounded-xl"><b>${t.title}</b> at ${t.time || 'All Day'}</div>`).join('') : `<p class="italic text-gray-500">No events for this date.</p>`;
+            document.getElementById('modal-cal-day').classList.remove('hidden');
+        }
+
         function submitAITask() {
-            const inputVal = document.getElementById('ai-task-input').value.trim();
-            if(!inputVal) return;
-
-            // Simulated AI Grammar & Formatting
-            let processedTitle = inputVal;
-            if(processedTitle.toLowerCase().includes('cmm app')) processedTitle = processedTitle.replace(/cmm app/gi, 'Common App');
-            if(processedTitle.toLowerCase().includes('span') && !processedTitle.toLowerCase().includes('spanish')) processedTitle = processedTitle.replace(/span/gi, 'Spanish');
-            
-            // Capitalize first letter and ensure punctuation
-            processedTitle = processedTitle.charAt(0).toUpperCase() + processedTitle.slice(1);
-            if(!/[.!?]$/.test(processedTitle)) processedTitle += '.';
-
-            // Simple date extraction simulation
-            const today = new Date();
-            let targetDate = today.toISOString().split('T')[0];
-            let targetTime = "12:00";
-            let category = "General";
-
-            if(processedTitle.toLowerCase().includes('thursday')) {
-                // Approximate Thursday
-                targetDate = "2026-10-08";
-            } else if(processedTitle.toLowerCase().includes('friday')) {
-                targetDate = "2026-10-09";
-            }
-
-            if(processedTitle.toLowerCase().includes('3pm') || processedTitle.toLowerCase().includes('3:00')) targetTime = "15:00";
-            if(processedTitle.toLowerCase().includes('spanish')) category = "Spanish class";
-            if(processedTitle.toLowerCase().includes('app')) category = "College Apps";
-
-            const newTask = {
-                id: Date.now(),
-                title: processedTitle,
-                date: targetDate,
-                time: targetTime,
-                category: category,
-                priority: processedTitle.toLowerCase().includes('due') || processedTitle.toLowerCase().includes('meeting'),
-                completed: false
-            };
-
-            appData.tasks.unshift(newTask);
+            const val = document.getElementById('ai-task-input').value.trim();
+            if(!val) return;
+            appData.tasks.unshift({ id: Date.now(), title: val, date: new Date().toISOString().split('T')[0], time: "12:00", category: "General", priority: true, completed: false });
             document.getElementById('ai-task-input').value = '';
             saveData();
         }
@@ -936,16 +818,13 @@
             const task = appData.tasks.find(t => t.id === id);
             if(task) {
                 task.completed = !task.completed;
-                if(task.completed) {
-                    appData.coins += 15; // Reward coins
-                }
+                if(task.completed) appData.coins += 15;
                 saveData();
             }
         }
 
         function renderTasksView() {
             const todayStr = new Date().toISOString().split('T')[0];
-            
             const todayTasks = appData.tasks.filter(t => t.date === todayStr && !t.completed);
             const upcomingTasks = appData.tasks.filter(t => t.date !== todayStr && !t.completed);
             const completedTasks = appData.tasks.filter(t => t.completed);
@@ -959,55 +838,44 @@
                     <div class="flex items-center gap-3">
                         <input type="checkbox" ${t.completed ? 'checked' : ''} onchange="toggleTaskComplete(${t.id})" class="w-4 h-4 accent-pink-500 cursor-pointer">
                         <div>
-                            <p class="font-bold ${t.priority ? 'text-[var(--accent-color)] font-extrabold' : ''}">${t.title}</p>
-                            <p class="text-xs text-[var(--text-secondary)]">${t.category} • ${t.date} (${t.time})</p>
+                            <p class="font-bold">${t.title}</p>
+                            <p class="text-xs text-[var(--text-secondary)]">${t.date} (${t.time})</p>
                         </div>
                     </div>
                 </div>`;
 
-            document.getElementById('task-list-today').innerHTML = todayTasks.length ? todayTasks.map(renderCard).join('') : `<p class="text-sm text-[var(--text-secondary)] italic text-center py-6">All caught up for today! ✨</p>`;
+            document.getElementById('task-list-today').innerHTML = todayTasks.length ? todayTasks.map(renderCard).join('') : `<p class="text-sm text-[var(--text-secondary)] italic text-center py-6">All caught up!</p>`;
             document.getElementById('task-list-upcoming').innerHTML = upcomingTasks.length ? upcomingTasks.map(renderCard).join('') : `<p class="text-sm text-[var(--text-secondary)] italic text-center py-6">No upcoming tasks.</p>`;
-            document.getElementById('task-list-completed').innerHTML = completedTasks.length ? completedTasks.map(renderCard).join('') : `<p class="text-sm text-[var(--text-secondary)] italic text-center py-6">No completed history yet.</p>`;
+            document.getElementById('task-list-completed').innerHTML = completedTasks.length ? completedTasks.map(renderCard).join('') : `<p class="text-sm text-[var(--text-secondary)] italic text-center py-6">No completed items.</p>`;
         }
 
-        // --- Tab 5: Study & Virtual Pet Logic ---
         function renderStudyView() {
             document.getElementById('pet-name-display').innerText = appData.pet.name;
             document.getElementById('pet-mood-display').innerText = `Mood: ${appData.pet.mood}`;
 
-            // Study Checklist
-            const pendingTasks = appData.tasks.filter(t => !t.completed).slice(0, 4);
-            const checklistEl = document.getElementById('study-tasks-container');
-            if(pendingTasks.length === 0) {
-                checklistEl.innerHTML = `<p class="text-xs text-[var(--text-secondary)] italic">Great job! All study tasks completed.</p>`;
-            } else {
-                checklistEl.innerHTML = pendingTasks.map(t => `
-                    <div class="glass-panel p-2.5 rounded-xl flex items-center justify-between text-xs">
-                        <span class="font-medium">${t.title}</span>
-                        <button onclick="toggleTaskComplete(${t.id})" class="px-3 py-1 bg-pink-500 text-white rounded-lg font-bold hover:bg-pink-600">Done (+15)</button>
-                    </div>
-                `).join('');
-            }
+            const pending = appData.tasks.filter(t => !t.completed).slice(0, 4);
+            document.getElementById('study-tasks-container').innerHTML = pending.length ? pending.map(t => `
+                <div class="glass-panel p-2.5 rounded-xl flex items-center justify-between text-xs">
+                    <span class="font-medium">${t.title}</span>
+                    <button onclick="toggleTaskComplete(${t.id})" class="px-3 py-1 bg-pink-500 text-white rounded-lg font-bold">Done (+15)</button>
+                </div>
+            `).join('') : `<p class="text-xs text-[var(--text-secondary)] italic">All checklist items done!</p>`;
 
-            // Shop Items
-            const shopEl = document.getElementById('shop-items-container');
-            shopEl.innerHTML = appData.shopItems.map(item => `
+            document.getElementById('shop-items-container').innerHTML = appData.shopItems.map(item => `
                 <div class="glass-panel p-3 rounded-2xl flex items-center justify-between text-sm">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-pink-200/60 flex items-center justify-center text-pink-600">
-                            <i class="fa-solid ${item.icon}"></i>
-                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-sky-200 flex items-center justify-center text-blue-600"><i class="fa-solid ${item.icon}"></i></div>
                         <div>
                             <p class="font-bold">${item.name}</p>
-                            <p class="text-xs text-[var(--text-secondary)]"><i class="fa-solid fa-coins text-amber-400 mr-1"></i>${item.price} Coins</p>
+                            <p class="text-xs text-[var(--text-secondary)]"><i class="fa-solid ${appData.currencyIcon} text-amber-400 mr-1"></i>${item.price}</p>
                         </div>
                     </div>
-                    <button onclick="buyShopItem(${item.price}, '${item.name}')" class="px-3 py-1.5 rounded-xl bg-pink-500 text-white text-xs font-bold hover:bg-pink-600 shadow-sm">Buy</button>
+                    <button onclick="buyShopItem(${item.price}, '${item.name}')" class="px-3 py-1.5 rounded-xl bg-pink-500 text-white text-xs font-bold shadow-sm">Buy</button>
                 </div>
             `).join('');
         }
 
-        function feedPetClick() {
+        function interactPet() {
             appData.pet.mood = "Ecstatic & Loved! 💕";
             saveData();
         }
@@ -1017,61 +885,49 @@
                 appData.coins -= price;
                 appData.pet.mood = `Happily enjoying ${itemName}! 🐾`;
                 saveData();
-                alertBox(`You successfully purchased ${itemName} for your pet!`);
+                alert(`Successfully purchased ${itemName}! Deducted ${price} Nana Coins.`);
             } else {
-                alertBox(`Not enough Aura Coins! Complete more tasks to earn coins.`);
+                alert(`Not enough Nana Coins! Complete tasks to earn more.`);
             }
         }
 
-        function alertBox(msg) {
-            // Non-intrusive notification banner substitute
-            const div = document.createElement('div');
-            div.className = "fixed bottom-6 right-6 z-50 glass-panel px-6 py-3 rounded-2xl shadow-2xl bg-white/90 text-sm font-bold text-[var(--heading-color)] border-pink-400 animate-bounce";
-            div.innerHTML = `<i class="fa-solid fa-bell text-pink-500 mr-2"></i> ${msg}`;
-            document.body.appendChild(div);
-            setTimeout(() => div.remove(), 3500);
-        }
-
-        // --- Modals & Actions ---
+        // Modals & Editors
         function openColorWheelModal() {
-            const styleObj = appData.customizations[currentTab] || appData.customizations.home;
-            document.getElementById('setting-bg').value = styleObj.bg;
-            document.getElementById('setting-heading').value = styleObj.heading;
-            document.getElementById('setting-text').value = styleObj.text;
-            document.getElementById('setting-secondary').value = styleObj.secondary;
-            document.getElementById('setting-accent').value = styleObj.accent;
-            document.getElementById('setting-font').value = styleObj.font;
-            document.getElementById('setting-opacity').value = styleObj.opacity;
-            document.getElementById('opacity-val').innerText = styleObj.opacity;
+            document.getElementById('setting-heading').value = appData.customizations.heading;
+            document.getElementById('setting-text').value = appData.customizations.text;
+            document.getElementById('setting-accent').value = appData.customizations.accent;
+            document.getElementById('setting-currency-icon').value = appData.currencyIcon;
             document.getElementById('modal-colorwheel').classList.remove('hidden');
         }
 
+        function toggleCustomBgInput(val) {
+            if(val === 'custom') document.getElementById('custom-bg-wrapper').classList.remove('hidden');
+            else document.getElementById('custom-bg-wrapper').classList.add('hidden');
+        }
+
         function savePageCustomization() {
-            appData.customizations[currentTab] = {
-                bg: document.getElementById('setting-bg').value,
-                heading: document.getElementById('setting-heading').value,
-                text: document.getElementById('setting-text').value,
-                secondary: document.getElementById('setting-secondary').value,
-                accent: document.getElementById('setting-accent').value,
-                font: document.getElementById('setting-font').value,
-                opacity: document.getElementById('setting-opacity').value
-            };
+            const bgChoice = document.getElementById('setting-bg').value;
+            appData.customizations.bg = bgChoice === 'custom' ? document.getElementById('setting-custom-bg').value : "linear-gradient(135deg, #ffe4ec 0%, #fff0f5 50%, #ffb6c1 100%)";
+            appData.customizations.heading = document.getElementById('setting-heading').value;
+            appData.customizations.text = document.getElementById('setting-text').value;
+            appData.customizations.accent = document.getElementById('setting-accent').value;
+            appData.currencyIcon = document.getElementById('setting-currency-icon').value;
             closeModal('modal-colorwheel');
             saveData();
         }
 
         function openHomeEditModal() {
-            document.getElementById('edit-q1').value = appData.homeCollage.q1;
-            document.getElementById('edit-q2').value = appData.homeCollage.q2;
-            document.getElementById('edit-q3').value = appData.homeCollage.q3;
+            document.getElementById('edit-img1').value = appData.visionBoard.img1;
+            document.getElementById('edit-img2').value = appData.visionBoard.img2;
+            document.getElementById('edit-img3').value = appData.visionBoard.img3;
             document.getElementById('modal-home-edit').classList.remove('hidden');
         }
 
-        function saveHomeCollage() {
-            appData.homeCollage = {
-                q1: document.getElementById('edit-q1').value,
-                q2: document.getElementById('edit-q2').value,
-                q3: document.getElementById('edit-q3').value
+        function saveVisionBoard() {
+            appData.visionBoard = {
+                img1: document.getElementById('edit-img1').value,
+                img2: document.getElementById('edit-img2').value,
+                img3: document.getElementById('edit-img3').value
             };
             closeModal('modal-home-edit');
             saveData();
@@ -1079,15 +935,12 @@
 
         function editWeatherLocation() {
             document.getElementById('edit-weather-loc').value = appData.weather.location;
-            document.getElementById('edit-weather-temp').value = appData.weather.temp;
             document.getElementById('modal-weather-edit').classList.remove('hidden');
         }
 
         function saveWeatherLocation() {
-            appData.weather = {
-                location: document.getElementById('edit-weather-loc').value,
-                temp: document.getElementById('edit-weather-temp').value
-            };
+            const loc = document.getElementById('edit-weather-loc').value;
+            appData.weather = { location: loc, temp: "70°F", desc: "Sunny" };
             closeModal('modal-weather-edit');
             saveData();
         }
@@ -1099,64 +952,39 @@
         }
 
         function saveCountdownTarget() {
-            appData.countdown = {
-                title: document.getElementById('edit-cd-title').value,
-                target: document.getElementById('edit-cd-date').value
-            };
+            appData.countdown = { title: document.getElementById('edit-cd-title').value, target: document.getElementById('edit-cd-date').value };
             closeModal('modal-countdown-edit');
             saveData();
         }
 
-        function openAddEventModal() {
-            document.getElementById('modal-schedule-event').classList.remove('hidden');
-        }
-
-        function openAddEventModalWithTime(day, hour) {
-            document.getElementById('sch-day').value = day;
-            document.getElementById('sch-hour').value = hour;
-            document.getElementById('modal-schedule-event').classList.remove('hidden');
-        }
+        function openAddEventModal() { document.getElementById('modal-schedule-event').classList.remove('hidden'); }
 
         function saveScheduleEvent() {
             const title = document.getElementById('sch-title').value || "Event";
             const day = parseInt(document.getElementById('sch-day').value);
             const hour = parseInt(document.getElementById('sch-hour').value);
+            const minute = parseInt(document.getElementById('sch-minute').value);
             const color = document.getElementById('sch-color').value;
-            const opacity = parseFloat(document.getElementById('sch-opacity').value);
-            const applyAll = document.getElementById('sch-apply-all').checked;
-
-            if(applyAll) {
-                for(let d = 0; d < 7; d++) {
-                    appData.scheduleEvents.push({ id: Date.now() + d, title, day: d, hour, color, opacity });
-                }
-            } else {
-                appData.scheduleEvents.push({ id: Date.now(), title, day, hour, color, opacity });
-            }
-
+            appData.scheduleEvents.push({ id: Date.now(), title, day, hour, minute, color });
             closeModal('modal-schedule-event');
             saveData();
         }
 
-        function openScheduleHistory() {
-            alertBox("History loaded: Applied previous week's schedule templates seamlessly.");
-        }
-
         function openPetSettings() {
             document.getElementById('pet-name-input').value = appData.pet.name;
-            document.getElementById('pet-temperament').value = appData.pet.temperament;
+            document.getElementById('pet-temp-input').value = appData.pet.temperament;
             document.getElementById('modal-pet-settings').classList.remove('hidden');
         }
 
         function savePetSettings() {
             appData.pet.name = document.getElementById('pet-name-input').value;
-            appData.pet.temperament = document.getElementById('pet-temperament').value;
+            appData.pet.temperament = document.getElementById('pet-temp-input').value;
             closeModal('modal-pet-settings');
             saveData();
         }
 
         function openShopEditor() {
-            const container = document.getElementById('shop-editor-list');
-            container.innerHTML = appData.shopItems.map((item, idx) => `
+            document.getElementById('shop-editor-list').innerHTML = appData.shopItems.map((item, idx) => `
                 <div class="flex items-center gap-2">
                     <input type="text" id="shop-name-${idx}" value="${item.name}" class="glass-input flex-1 p-2 rounded-xl">
                     <input type="number" id="shop-price-${idx}" value="${item.price}" class="glass-input w-20 p-2 rounded-xl">
@@ -1167,20 +995,17 @@
 
         function saveShopEditor() {
             appData.shopItems.forEach((item, idx) => {
-                const nameInput = document.getElementById(`shop-name-${idx}`);
-                const priceInput = document.getElementById(`shop-price-${idx}`);
-                if(nameInput) item.name = nameInput.value;
-                if(priceInput) item.price = parseInt(priceInput.value) || item.price;
+                const n = document.getElementById(`shop-name-${idx}`);
+                const p = document.getElementById(`shop-price-${idx}`);
+                if(n) item.name = n.value;
+                if(p) item.price = parseInt(p.value) || item.price;
             });
             closeModal('modal-shop-editor');
             saveData();
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-        }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
-        // Initialize App on Load
         window.onload = function() {
             switchTab('home');
         };
